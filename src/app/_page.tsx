@@ -1,20 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-
-import mermaid from 'mermaid';
-import { useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 const Home = () => {
   const [markdown, setMarkdown] = useState<string>('');
 
-  useEffect(() => {
-    mermaid.initialize({ startOnLoad: true });
-  }, []);
-
   const handleMarkdownChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdown(event.target.value);
-    mermaid.contentLoaded(); // Re-render Mermaid diagrams
   };
 
   return (
@@ -28,10 +21,7 @@ const Home = () => {
           />
         </div>
         <div className="preview">
-
-
-          {markdown}
-
+          <ReactMarkdown>{markdown}</ReactMarkdown>
         </div>
       </main>
     </div>
