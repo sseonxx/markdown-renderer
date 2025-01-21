@@ -1,20 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import mermaidDefinition from '@/components/example';
+import MarkdownWithMermaid from '@/components/MarkdownWithMermaid';
+import { useState, useEffect } from 'react';
 
-import mermaid from 'mermaid';
-import { useEffect } from 'react';
 
 const Home = () => {
   const [markdown, setMarkdown] = useState<string>('');
 
   useEffect(() => {
-    mermaid.initialize({ startOnLoad: true });
+    const markdownContent = `
+# Mermaid Example
+
+\`\`\`mermaid
+${mermaidDefinition}
+\`\`\`
+  `;
+    setMarkdown(markdownContent);
+
   }, []);
 
   const handleMarkdownChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdown(event.target.value);
-    mermaid.contentLoaded(); // Re-render Mermaid diagrams
+
   };
 
   return (
@@ -27,11 +35,9 @@ const Home = () => {
             placeholder="Write your markdown here..."
           />
         </div>
+
         <div className="preview">
-
-
-          {markdown}
-
+          <MarkdownWithMermaid content={markdown} />
         </div>
       </main>
     </div>

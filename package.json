@@ -10,20 +10,12 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.1.6",
-    "file-saver": "^2.0.5",
-    "highlight.js": "^11.11.1",
-    "html2canvas": "^1.4.1",
-    "jspdf": "^2.5.2",
     "mermaid": "^11.4.1",
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.3",
-    "react-syntax-highlighter": "^15.6.1",
-    "remark": "^15.0.1",
-    "remark-gfm": "^4.0.0",
-    "remark-html": "^16.0.1",
-    "remark-mermaidjs": "^7.0.0"
+    "react-syntax-highlighter": "^15.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
