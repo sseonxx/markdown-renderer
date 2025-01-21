@@ -1,30 +1,19 @@
 'use client';
 
-import mermaidDefinition from '@/components/example';
 import exportToPDF from '@/components/exportToPDF';
 import MarkdownWithMermaid from '@/components/MarkdownWithMermaid';
-import { useState, useEffect, useRef, RefObject } from 'react';
+import { useState, useRef, RefObject } from 'react';
 
 
 const Home = () => {
   const markdownRef = useRef<HTMLDivElement>(null);
   const [markdown, setMarkdown] = useState<string>('');
 
-  useEffect(() => {
-    const markdownContent = `
-# Mermaid Example
-\`\`\`mermaid
-${mermaidDefinition}
-\`\`\`
-  `;
-    setMarkdown(markdownContent);
-
-  }, []);
-
   const handleMarkdownChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdown(event.target.value);
 
   };
+
   const exportButtonHandler = async () => {
     // null 체크를 통해 안정성 확보
     if (markdownRef.current) {
@@ -34,6 +23,28 @@ ${mermaidDefinition}
     }
   };
 
+  const handleDrop = async (event: React.DragEvent<HTMLTextAreaElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
+      const file = event.dataTransfer.files[0];
+
+      if (file.type === 'text/markdown' || file.name.endsWith('.md')) {
+        const fileContent = await file.text();
+        setMarkdown(fileContent);
+      } else {
+        alert('Only .md file are supported.');
+      }
+
+      event.dataTransfer.clearData();
+    }
+  }
+
+  const handleDragOver = (event: React.DragEvent<HTMLTextAreaElement>) => {
+    event.preventDefault();
+  }
+
   return (
     <div className="container">
       <button onClick={exportButtonHandler}>export</button>
@@ -42,7 +53,9 @@ ${mermaidDefinition}
           <textarea
             value={markdown}
             onChange={handleMarkdownChange}
-            placeholder="Write your markdown here..."
+            placeholder="Write your markdown here or drag & drop a .md file..."
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
           />
         </div>
 
