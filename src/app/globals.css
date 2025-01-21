@@ -60,12 +60,13 @@ textarea {
   background-color: #f3f3f3;
   padding: 2px 4px;
   border-radius: 4px;
+  color: orangered;
 }
 
 .preview pre {
   background-color: #F5F5F5;
   color: #f8f8f2;
-  padding: 10px;
+  padding: 20px;
   border-radius: 4px;
   overflow-x: auto;
 }

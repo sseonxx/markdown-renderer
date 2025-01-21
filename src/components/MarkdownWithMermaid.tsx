@@ -63,6 +63,21 @@ const MarkdownWithMermaid: React.FC<MarkdownWithMermaidProps> = ({ content }) =>
             </code>
           );
         },
+        img: ({ src, alt }) => (
+          <div style={{ textAlign: 'center', marginTop: '10px' }}>
+            <img
+              src={src}
+              alt={alt}
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+                display: 'block',
+                margin: '0 auto',
+              }}
+            />
+          </div>
+        ),
+
       }}
     >
       {content}
