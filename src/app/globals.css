@@ -17,7 +17,7 @@ main {
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -63,7 +63,7 @@ textarea {
 }
 
 .preview pre {
-  background-color: #272822;
+  background-color: #F5F5F5;
   color: #f8f8f2;
   padding: 10px;
   border-radius: 4px;
