@@ -50,10 +50,12 @@ textarea {
 
 .preview h1, .preview h2, .preview h3, .preview h4, .preview h5, .preview h6 {
   color: #0056b3;
+  page-break-inside: avoid;
 }
 
 .preview p {
   line-height: 1.6;
+  page-break-inside: avoid;
 }
 
 .preview code {
@@ -61,7 +63,15 @@ textarea {
   padding: 2px 4px;
   border-radius: 4px;
   color: orangered;
+  page-break-inside: avoid;
 }
+.preview aside {
+  background-color: #f3f3f3;
+  padding: 2px 4px;
+  border-radius: 4px;
+  page-break-inside: avoid;
+}
+
 
 .preview pre {
   background-color: #F5F5F5;
@@ -69,10 +79,15 @@ textarea {
   padding: 20px;
   border-radius: 4px;
   overflow-x: auto;
+  page-break-inside: avoid;
+}
+.preview img {
+  page-break-inside: avoid;
 }
 
 .preview .mermaid {
   margin-top: 20px;
+  page-break-inside: avoid;
 }
 
 .preview a {

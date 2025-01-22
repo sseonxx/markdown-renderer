@@ -23,6 +23,13 @@ export async function POST(req: Request) {
     const pdfBuffer = await page.pdf({
       format: "A4",
       printBackground: true, // 배경 스타일 포함
+      scale:0.9,
+      margin: {
+        top: "20mm",
+        bottom: "20mm",
+        left: "20mm",
+        right: "20mm",
+      },
     });
 
     await browser.close();
