@@ -1,6 +1,8 @@
 'use client';
 
+import { exportOfPuppeteer } from '@/components/exportOfPuppeteer';
 import exportToPDF from '@/components/exportToPDF';
+import exportToPDFHTML from '@/components/exportToPDFHTML';
 import MarkdownWithMermaid from '@/components/MarkdownWithMermaid';
 import { useState, useRef, RefObject } from 'react';
 
@@ -22,6 +24,16 @@ const Home = () => {
       console.error('Markdown preview reference is null.');
     }
   };
+
+  const exportButtonHandlerHTML = async () => {
+    if (markdownRef.current) {
+      // await exportToPDFHTML(markdownRef as RefObject<HTMLDivElement>); // PDF 변환
+
+      await exportOfPuppeteer(markdownRef as RefObject<HTMLDivElement>)
+    } else {
+      console.error('Markdown preview reference is null.');
+    }
+  }
 
   const handleDrop = async (event: React.DragEvent<HTMLTextAreaElement>) => {
     event.preventDefault();
@@ -48,6 +60,7 @@ const Home = () => {
   return (
     <div className="container">
       <button onClick={exportButtonHandler}>export</button>
+      <button onClick={exportButtonHandlerHTML}>html export</button>
       <main>
         <div className="editor">
           <textarea
